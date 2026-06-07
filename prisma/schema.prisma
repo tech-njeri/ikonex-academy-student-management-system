@@ -53,3 +53,44 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Stream {
+  id             Int             @id @default(autoincrement())
+  name           String
+  students       Student[]
+  streamSubjects StreamSubject[]
+}
+
+model Student {
+  id          Int     @id @default(autoincrement())
+  name        String
+  admissionNo String  @unique
+  streamId    Int
+  stream      Stream  @relation(fields: [streamId], references: [id])
+  scores      Score[]
+}
+
+model Subject {
+  id             Int             @id @default(autoincrement())
+  name           String
+  scores         Score[]
+  streamSubjects StreamSubject[]
+}
+
+model Score {
+  id        Int     @id @default(autoincrement())
+  studentId Int
+  subjectId Int
+  examScore Float
+  catScore  Float
+  student   Student @relation(fields: [studentId], references: [id])
+  subject   Subject @relation(fields: [subjectId], references: [id])
+}
+
+model StreamSubject {
+  id        Int     @id @default(autoincrement())
+  streamId  Int
+  subjectId Int
+  stream    Stream  @relation(fields: [streamId], references: [id])
+  subject   Subject @relation(fields: [subjectId], references: [id])
+}

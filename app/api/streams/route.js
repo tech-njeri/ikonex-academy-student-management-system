@@ -1,9 +1,14 @@
 // © 2026 Joy Njeri. Submitted for Ikonex Systems Intern Assessment.
 // Evaluation use only. All rights reserved.
+
+import prisma from '@/lib/prisma'
+console.log('PRISMA:', prisma)
+console.log('PRISMA TYPE:', typeof prisma)
+
 export const dynamic = 'force-dynamic'
 
 import { NextResponse } from 'next/server'
-import prisma from '@/lib/prisma'
+// import prisma from '@/lib/prisma'
 
 // GET — fetch all streams from the database
 export async function GET() {
