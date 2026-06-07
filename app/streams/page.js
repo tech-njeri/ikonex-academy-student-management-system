@@ -13,10 +13,16 @@ export default function StreamsPage() {
   }, [])
 
   async function fetchStreams() {
+  try {
     const res = await fetch('/api/streams')
+    if (!res.ok) throw new Error('Failed to fetch')
     const data = await res.json()
-    setStreams(data)
+    setStreams(Array.isArray(data) ? data : [])
+  } catch (err) {
+    console.error(err)
+    setStreams([])
   }
+}
 
   async function createStream() {
     if (!name) return
