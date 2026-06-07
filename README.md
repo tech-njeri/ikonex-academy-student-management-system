@@ -60,7 +60,7 @@ npm install
 
 3. Create a `.env` file in the root folder:
 ```
-DATABASE_URL="postgresql://postgres:GJvDghKLdBjzsBRtFmLUPNgaSDEshrxW@acela.proxy.rlwy.net:29757/railway"
+DATABASE_URL="postgresql://postgres:****@acela.proxy.rlwy.net:29757/railway"
 ```
 
 4. Run database migrations:
