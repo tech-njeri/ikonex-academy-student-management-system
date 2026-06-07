@@ -13,7 +13,8 @@ export async function GET() {
     })
     return NextResponse.json(streams)
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch streams' }, { status: 500 })
+    console.error('[GET /api/streams]', error)
+    return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }
 //The POST handler processes HTTP POST requests. It reads the JSON data from the request body, meaning the information sent by the client, and uses Prisma, which is the application's database access tool, to create a new record in the database. If the operation succeeds, it returns the created record as a JSON response; otherwise, it returns an error response with status code 500
